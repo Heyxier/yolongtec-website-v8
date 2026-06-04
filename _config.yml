@@ -50,7 +50,6 @@ keep_files:
   - logo-white.png
   - styles.css
   - script.js
-  - products-dropdown.css
 
 # Plugins
 plugins:
