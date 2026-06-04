@@ -1,13 +1,14 @@
 drill:
   name: DRILL
+  name_zh: 无绳电钻
   slug: drill
   title: 无绳电钻
-  name_zh: 无绳电钻
-  image: /images/drill-family.jpg
   desc: '12V & 18V cordless drills, impact drivers, and hammer drills'
+  image: /images/drill-family.jpg
   order: 1
 fastening:
   name: FASTENING
+  name_zh: 紧固工具
   slug: fastening
   title: 紧固工具
   desc: 'Impact wrenches, ratchets, and screwdrivers'
@@ -15,6 +16,7 @@ fastening:
   order: 2
 grinder-cutter:
   name: GRINDER & CUTTER
+  name_zh: 角磨机/切割机
   slug: grinder-cutter
   title: 角磨机/切割机
   desc: 'Angle grinders, cut-off tools, and rotary tools'
@@ -22,6 +24,7 @@ grinder-cutter:
   order: 3
 hammer:
   name: HAMMER
+  name_zh: 电锤
   slug: hammer
   title: 电锤
   desc: 'Rotary hammers, demolition hammers, and chipping hammers'
@@ -29,6 +32,7 @@ hammer:
   order: 4
 saw:
   name: SAW
+  name_zh: 锯
   slug: saw
   title: 锯
   desc: 'Circular saws, reciprocating saws, and jigsaws'
@@ -36,6 +40,7 @@ saw:
   order: 5
 sander-polisher:
   name: SANDER & POLISHER
+  name_zh: 磨砂机/抛光机
   slug: sander-polisher
   title: 磨砂机/抛光机
   desc: 'Orbital sanders, polishers, and multi-tools'
@@ -43,6 +48,7 @@ sander-polisher:
   order: 6
 cleanning:
   name: CLEANNING
+  name_zh: 清洁设备
   slug: cleanning
   title: 清洁设备
   desc: 'Blowers, vacuums, and pressure washers'
@@ -50,6 +56,7 @@ cleanning:
   order: 7
 lighting:
   name: LIGHTING
+  name_zh: 照明设备
   slug: lighting
   title: 照明设备
   desc: 'Work lights, flashlights, and site lights'
@@ -57,8 +64,9 @@ lighting:
   order: 8
 scissors:
   name: SCISSORS
+  name_zh: 电动剪刀
   slug: scissors
   title: 电动剪刀
-  image: /images/dealer-network.jpg
   desc: 4V electric scissors
+  image: /images/dealer-network.jpg
   order: 9

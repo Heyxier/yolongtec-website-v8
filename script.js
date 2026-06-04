@@ -1,5 +1,5 @@
 /**
- * Yolong 亚隆 - 官网交互脚本
+ * 园龙科技 - 官网交互脚本
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -203,7 +203,7 @@ function initMobileMenu() {
     // 点击菜单项关闭菜单（跳过 PRODUCTS 下拉触发链接）
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
-            // 不要关闭移动菜单 - PRODUCTS 需要展开子菜单
+            // 不要关闭移动菜单 - 产品中心需要展开子菜单
             if (window.innerWidth <= 768 && link.closest('.nav-dropdown')) {
                 e.preventDefault();
                 return;
@@ -218,18 +218,18 @@ function initMobileMenu() {
         });
     });
     
-    // Mobile dropdown toggle for PRODUCTS
+    // Mobile dropdown toggle for 产品中心
     const navDropdown = navMenu.querySelector('.nav-dropdown');
     if (navDropdown) {
         const dropdownLink = navDropdown.querySelector('.nav-link');
         
-        // 移动端：把 PRODUCTS 链接变成纯触发按钮，不再有导航行为
+        // 移动端：把链接变成纯触发按钮，不再有导航行为
         if (window.innerWidth <= 768) {
             dropdownLink.setAttribute('data-href', dropdownLink.getAttribute('href'));
             dropdownLink.setAttribute('href', 'javascript:void(0)');
         }
         
-        // 移动端：点击 PRODUCTS 展开/收起子菜单
+        // 移动端：点击展开/收起子菜单
         dropdownLink.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
@@ -276,7 +276,7 @@ function initFormSubmit() {
             // 提交按钮状态
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
-            btn.textContent = 'SENDING...';
+            btn.textContent = '提交中...';
             btn.disabled = true;
             
             try {
@@ -306,7 +306,8 @@ function initFormSubmit() {
 }
 
 /**
- * 搜索功能
+ * 搜索功能（纯中文）
+ * 数据源：由 _layouts/default.html 注入的 window.__SEARCH_DATA__
  */
 function initSearch() {
     const searchBtn = document.querySelector('.search-btn');
@@ -317,13 +318,13 @@ function initSearch() {
     
     if (!searchBtn || !searchBar) return;
     
-    // Open search bar
+    // 打开搜索栏
     searchBtn.addEventListener('click', () => {
         searchBar.classList.add('active');
         searchInput.focus();
     });
     
-    // Close search bar
+    // 关闭搜索栏
     if (closeSearch) {
         closeSearch.addEventListener('click', () => {
             searchBar.classList.remove('active');
@@ -332,7 +333,7 @@ function initSearch() {
         });
     }
     
-    // Close on Escape key
+    // 按 Escape 关闭
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && searchBar.classList.contains('active')) {
             searchBar.classList.remove('active');
@@ -341,7 +342,7 @@ function initSearch() {
         }
     });
     
-    // Search on input
+    // 输入时搜索
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
@@ -351,22 +352,16 @@ function initSearch() {
                 return;
             }
             
-            // Search all (products + news + technology)
+            // 搜索全部（产品 + 新闻 + 技术文章）
             const results = searchAll(query);
             displaySearchResults(results, searchResults);
         });
     }
 }
 
-/**
- * 搜索功能（数据驱动 + 中英文）
- * 数据源：由 _layouts/default.html 注入的 window.__SEARCH_DATA__
- * 新增搜索内容：在 _articles/ 中添加文章，或在 _data/search.yml 中添加产品
- */
 function searchAll(query) {
     var data = window.__SEARCH_DATA__;
     if (!data) return [];
-    var isZh = window.location.pathname.indexOf('/zh/') !== -1;
     var q = query.toLowerCase();
     var results = [];
     
@@ -374,11 +369,9 @@ function searchAll(query) {
     if (data.products) {
         for (var i = 0; i < data.products.length; i++) {
             var p = data.products[i];
-            var searchName = isZh ? p.name_zh : p.name;
-            var searchCat = isZh ? p.category_zh : p.category;
-            if (searchName.toLowerCase().indexOf(q) !== -1 ||
-                p.model.toLowerCase().indexOf(q) !== -1 ||
-                searchCat.toLowerCase().indexOf(q) !== -1) {
+            if ((p.name && p.name.toLowerCase().indexOf(q) !== -1) ||
+                (p.model && p.model.toLowerCase().indexOf(q) !== -1) ||
+                (p.category && p.category.toLowerCase().indexOf(q) !== -1)) {
                 results.push(p);
             }
         }
@@ -388,8 +381,7 @@ function searchAll(query) {
     if (data.news) {
         for (var i = 0; i < data.news.length; i++) {
             var n = data.news[i];
-            var searchTitle = isZh ? n.title_zh : n.title;
-            if (searchTitle.toLowerCase().indexOf(q) !== -1) {
+            if (n.title && n.title.toLowerCase().indexOf(q) !== -1) {
                 results.push(n);
             }
         }
@@ -399,8 +391,7 @@ function searchAll(query) {
     if (data.technology) {
         for (var i = 0; i < data.technology.length; i++) {
             var t = data.technology[i];
-            var searchTitle = isZh ? t.title_zh : t.title;
-            if (searchTitle.toLowerCase().indexOf(q) !== -1) {
+            if (t.title && t.title.toLowerCase().indexOf(q) !== -1) {
                 results.push(t);
             }
         }
@@ -409,18 +400,13 @@ function searchAll(query) {
     return results;
 }
 
-/**
- * 显示搜索结果（中英文版）
- */
 function displaySearchResults(results, container) {
     if (!container) return;
-    var isZh = window.location.pathname.indexOf('/zh/') !== -1;
-    var base = window.location.pathname.match(/^\/[^\/]+/);
-    var baseUrl = base ? base[0] : '';
+    var base = window.location.pathname.match(/^\/([^/]+)/);
+    var baseUrl = base ? '/' + base[1] : '';
     
     if (results.length === 0) {
-        container.innerHTML = '<div class="search-no-results">' +
-            (isZh ? '未找到相关结果' : 'No results found') + '</div>';
+        container.innerHTML = '<div class="search-no-results">未找到相关结果</div>';
         container.classList.add('active');
         return;
     }
@@ -431,26 +417,20 @@ function displaySearchResults(results, container) {
         var name, cat, path, typeLabel;
         
         if (r.type === 'product') {
-            name = isZh ? r.name_zh : r.name;
-            cat = isZh ? r.category_zh : r.category;
-            path = isZh
-                ? baseUrl + '/zh/products/' + r.slug + '/'
-                : baseUrl + '/products/' + r.slug + '.html';
-            typeLabel = isZh ? '产品' : 'PRODUCT';
+            name = r.name;
+            cat = r.category;
+            path = baseUrl + '/products/' + r.slug + '/';
+            typeLabel = '产品';
         } else if (r.type === 'news') {
-            name = isZh ? r.title_zh : r.title;
+            name = r.title;
             cat = r.category || '';
-            path = isZh
-                ? baseUrl + '/zh/news/' + r.slug + '/'
-                : baseUrl + '/news/' + r.slug + '/';
-            typeLabel = isZh ? '新闻' : 'NEWS';
+            path = baseUrl + '/news/' + r.slug + '/';
+            typeLabel = '新闻';
         } else if (r.type === 'technology') {
-            name = isZh ? r.title_zh : r.title;
+            name = r.title;
             cat = r.category || '';
-            path = isZh
-                ? baseUrl + '/zh/technology/' + r.slug + '/'
-                : baseUrl + '/technology/' + r.slug + '/';
-            typeLabel = isZh ? '技术' : 'TECH';
+            path = baseUrl + '/technology/' + r.slug + '/';
+            typeLabel = '技术';
         } else {
             continue;
         }
@@ -466,10 +446,6 @@ function displaySearchResults(results, container) {
     container.innerHTML = html;
     container.classList.add('active');
 }
-
-// 移动端菜单 CSS - handled by styles.css
-
-// 页面加载完成后的淡入效果 - 已移除 body opacity hack 防止闪白
 
 // 导出函数供外部使用
 window.Yolong = {

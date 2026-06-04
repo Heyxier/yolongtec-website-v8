@@ -1,6 +1,6 @@
 ---
 layout: default
-title: News & Updates - Yolong Power Tools
+title: 新闻动态 - 园龙电动工具
 permalink: /news/
 ---
 
@@ -166,13 +166,13 @@ permalink: /news/
 
 <section class="news-page">
     <div class="section-bg">
-        <img src="{{ site.baseurl }}/images/construction-site.jpg" alt="News">
+        <img src="{{ 'images/construction-site.jpg' | relative_url }}" alt="新闻动态">
         <div class="section-overlay"></div>
     </div>
     <div class="container">
         <div class="news-page-header">
-            <h1>NEWS & <span>UPDATES</span></h1>
-            <p>Stay informed about our latest developments and industry insights</p>
+            <h1>新闻 & <span>动态</span></h1>
+            <p>了解园龙最新动态与行业洞察</p>
         </div>
 
         <div class="news-card-grid">
@@ -187,7 +187,7 @@ permalink: /news/
                 {% endif %}
                 <div class="news-block-body">
                     {% if article.publishedAt %}
-                    <span class="news-block-date">{{ article.publishedAt | date: "%B %d, %Y" }}</span>
+                    <span class="news-block-date">{{ article.publishedAt | date: "%Y年%m月%d日" }}</span>
                     {% endif %}
                     {% if article.category and article.category != "" %}
                     <span class="news-block-category">{{ article.category | upcase }}</span>
@@ -196,18 +196,19 @@ permalink: /news/
                     {% if article.excerpt and article.excerpt != "" %}
                     <p class="news-block-excerpt">{{ article.excerpt }}</p>
                     {% endif %}
-                    <span class="news-block-link">READ MORE</span>
+                    <span class="news-block-link">阅读更多</span>
                 </div>
             </a>
             {% endunless %}
             {% else %}
             <div class="news-empty">
                 <div class="news-empty-icon">📰</div>
-                <h3>News Coming Soon</h3>
-                <p>No news articles have been published yet. Check back later.</p>
+                <h3>新闻快来了</h3>
+                <p>还没有发布任何新闻文章，请稍后再来看看。</p>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
+
 

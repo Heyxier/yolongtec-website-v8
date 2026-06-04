@@ -1,82 +1,58 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: 'en' }}">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}园龙电动工具{% else %}Yolong Power Tools{% endif %}</title>
+    <title>{{ page.title }} - 园龙电动工具</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    {% endif %}
     <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/products-dropdown.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Language switcher button */
-        .lang-switch {
-            font-family: var(--font-helvetica);
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 4px 12px;
-            border: 1px solid var(--text-muted);
-            border-radius: 3px;
-            transition: all var(--transition-fast);
-            letter-spacing: 1px;
-            margin-right: 8px;
-        }
-        .lang-switch:hover {
-            border-color: var(--accent-500);
-            color: var(--accent-500);
-        }
-        {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}
         .nav-link, .dropdown-menu a {
             font-family: 'Noto Sans SC', sans-serif;
             font-size: 0.95rem;
         }
         .btn { font-size: 0.95rem; }
         .btn-large { font-size: 1rem; }
-        .lang-switch { font-size: 0.9rem; padding: 6px 14px; }
-        {% endif %}
     </style>
 </head>
 <body>
     <!-- Search Bar -->
     <div class="search-bar-container" id="searchBar">
-        <input type="text" class="search-input" id="searchInput" placeholder="{% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}搜索产品、新闻、技术文章...{% else %}Search products, news & articles...{% endif %}" autocomplete="off">
-        <button class="btn-close" id="closeSearch">{% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}关闭{% else %}CLOSE{% endif %}</button>
+        <input type="text" class="search-input" id="searchInput" placeholder="搜索产品、新闻、技术文章..." autocomplete="off">
+        <button class="btn-close" id="closeSearch">关闭</button>
         <div class="search-results" id="searchResults"></div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="{% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}{{ site.baseurl }}/zh/{% else %}{{ site.baseurl }}/index.html{% endif %}" class="logo">
-                <img src="{{ site.baseurl }}/logo-white.png" alt="Yolong">
+            <a href="{{ site.baseurl }}/index.html" class="logo">
+                <img src="{{ site.baseurl }}/logo-white.png" alt="园龙科技">
             </a>
             <ul class="nav-menu" id="navMenu">
-                {% if page.path contains 'zh/' or page.path contains '_zh_articles/' or page.path contains '_zh_products/' %}
-                <li><a href="{{ site.baseurl }}/zh/" class="nav-link">首页</a></li>
-                <li><a href="{{ site.baseurl }}/zh/about/" class="nav-link">关于园龙</a></li>
+                <li><a href="{{ site.baseurl }}/" class="nav-link">首页</a></li>
+                <li><a href="{{ site.baseurl }}/about/" class="nav-link">关于园龙</a></li>
                 <li class="nav-dropdown">
-                    <a href="{{ site.baseurl }}/zh/products/" class="nav-link">产品中心</a>
+                    <a href="{{ site.baseurl }}/products/" class="nav-link">产品中心</a>
                     <ul class="dropdown-menu">
-                        {% assign cat_list_zh = "" | split: "" %}
-                        {% for cat_hash in site.data.zh_categories %}
-                            {% assign cat_list_zh = cat_list_zh | push: cat_hash[1] %}
+                        {% assign cat_list = "" | split: "" %}
+                        {% for cat_hash in site.data.categories %}
+                            {% assign cat_list = cat_list | push: cat_hash[1] %}
                         {% endfor %}
-                        {% assign cat_list_zh = cat_list_zh | sort: "order" %}
-                        {% for cat in cat_list_zh %}
-                        <li><a href="{{ site.baseurl }}/zh/products/{{ cat.slug }}/">{{ cat.name_zh }}</a></li>
+                        {% assign cat_list = cat_list | sort: "order" %}
+                        {% for cat in cat_list %}
+                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name_zh }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
-                <li><a href="{{ site.baseurl }}/zh/news/" class="nav-link">新闻动态</a></li>
-                <li><a href="{{ site.baseurl }}/zh/technology/" class="nav-link">技术展望</a></li>
-                <li><a href="{{ site.baseurl }}/zh/contact/" class="nav-link">联系方式</a></li>
+                <li><a href="{{ site.baseurl }}/news/" class="nav-link">新闻动态</a></li>
+                <li><a href="{{ site.baseurl }}/technology/" class="nav-link">技术展望</a></li>
+                <li><a href="{{ site.baseurl }}/contact/" class="nav-link">联系方式</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="search-btn" aria-label="搜索">
@@ -85,54 +61,18 @@
                         <path d="M21 21l-4.35-4.35"/>
                     </svg>
                 </button>
-                <a href="{{ site.baseurl }}/zh/contact/" class="btn btn-accent">联系我们</a>
-                <a href="{{ site.baseurl }}/?lang=en" class="lang-switch" id="langSwitch">EN</a>
+                <a href="{{ site.baseurl }}/contact/" class="btn btn-accent">联系我们</a>
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
                     <span></span><span></span><span></span>
                 </button>
             </div>
-                {% else %}
-                <!-- 英文导航 -->
-                <li><a href="{{ site.baseurl }}/index.html" class="nav-link">HOME</a></li>
-                <li><a href="{{ site.baseurl }}/about/index.html" class="nav-link">ABOUT US</a></li>
-                <li class="nav-dropdown">
-                    <a href="{{ site.baseurl }}/products/" class="nav-link">PRODUCTS</a>
-                    <ul class="dropdown-menu">
-                        {% assign cat_list = "" | split: "" %}
-                        {% for cat_hash in site.data.categories %}
-                            {% assign cat_list = cat_list | push: cat_hash[1] %}
-                        {% endfor %}
-                        {% assign cat_list = cat_list | sort: "order" %}
-                        {% for cat in cat_list %}
-                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li><a href="{{ site.baseurl }}/news/index.html" class="nav-link">NEWS</a></li>
-                <li><a href="{{ site.baseurl }}/technology/index.html" class="nav-link">TECHNOLOGY</a></li>
-                <li><a href="{{ site.baseurl }}/contact/index.html" class="nav-link">CONTACT</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="search-btn" aria-label="Search">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="M21 21l-4.35-4.35"/>
-                    </svg>
-                </button>
-                <a href="{{ site.baseurl }}/contact/index.html" class="btn btn-accent">GET QUOTE</a>
-                <a href="{{ site.baseurl }}/zh/?lang=zh" class="lang-switch" id="langSwitch">中文</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-                {% endif %}
         </div>
     </nav>
 
     <!-- Page Content -->
     {{ content }}
 
-    <!-- Footer (unified include) -->
+    <!-- Footer -->
     {% include footer.html %}
 
     <script src="{{ site.baseurl }}/script.js"></script>
@@ -142,11 +82,9 @@
         products: [
             {% for p in site.data.search.products %}
             {
-                name: {{ p.name | jsonify }},
-                name_zh: {{ p.name_zh | jsonify }},
+                name: {{ p.name_zh | default: p.name | jsonify }},
                 model: {{ p.model | jsonify }},
-                category: {{ p.category | jsonify }},
-                category_zh: {{ p.category_zh | jsonify }},
+                category: {{ p.category_zh | default: p.category | jsonify }},
                 slug: {{ p.slug | jsonify }},
                 type: 'product'
             },
@@ -156,8 +94,7 @@
             {% for a in site.articles %}
             {% if a.placement == 'news' or a.placement == nil %}
             {
-                title: {{ a.title_en | default: a.title | jsonify }},
-                title_zh: {{ a.title | jsonify }},
+                title: {{ a.title | jsonify }},
                 slug: {{ a.slug | jsonify }},
                 category: {{ a.category | default: 'news' | jsonify }},
                 date: {{ a.publishedAt | jsonify }},
@@ -170,8 +107,7 @@
             {% for a in site.articles %}
             {% if a.placement == 'technology' %}
             {
-                title: {{ a.title_en | default: a.title | jsonify }},
-                title_zh: {{ a.title | jsonify }},
+                title: {{ a.title | jsonify }},
                 slug: {{ a.slug | jsonify }},
                 category: {{ a.category | default: 'technology' | jsonify }},
                 date: {{ a.publishedAt | jsonify }},
@@ -181,80 +117,6 @@
             {% endfor %}
         ]
     };
-    
-    /**
-     * 语言偏好管理 + IP首次访问自动检测
-     * 
-     * 优先级：URL参数 > localStorage > IP检测
-     * - URL参数: 语言切换按钮附带 ?lang=en 或 ?lang=zh，页面加载时处理，完全避免竞态
-     * - localStorage: 保存用户手动选择的偏好，有偏好时不检测
-     * - IP检测: 仅对全新用户（无任何偏好）执行一次
-     */
-    (function() {
-        var base = window.location.pathname.match(/^\/[^\/]+/);
-        var baseUrl = base ? base[0] : '';
-        var zhPath = baseUrl + '/zh/';
-        var enPath = baseUrl + '/';
-        var currentPath = window.location.pathname;
-        var isZh = currentPath.indexOf('/zh/') !== -1;
-        
-        // ===== 第一步：处理 URL 参数（最高优先级） =====
-        var urlParams = new URLSearchParams(window.location.search);
-        var langParam = urlParams.get('lang');
-        
-        if (langParam === 'en') {
-            localStorage.setItem('yolong_lang', 'en');
-            // 重定向到干净 URL（去掉 ?lang= 参数）
-            window.location.replace(enPath);
-            return; // 停止执行，等待重定向
-        }
-        if (langParam === 'zh') {
-            localStorage.setItem('yolong_lang', 'zh');
-            // 重定向到干净 URL
-            window.location.replace(zhPath);
-            return;
-        }
-        
-        // ===== 第二步：检查已保存的偏好 =====
-        var savedLang = localStorage.getItem('yolong_lang');
-        
-        // 如果用户有明确偏好（zh 或 en），尊重它，不检测
-        if (savedLang === 'zh' || savedLang === 'en') {
-            return; // 用户已选择，什么都不做
-        }
-        
-        // ===== 第三步：仅对全新用户做 IP 检测（savedLang 为 null 或 'zh-auto'） =====
-        if (!isZh) {
-            var userLang = navigator.language || navigator.userLanguage;
-            var isZhUser = userLang && userLang.indexOf('zh') === 0;
-            
-            if (isZhUser) {
-                try {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'https://ipapi.co/json/', true);
-                    xhr.timeout = 3000;
-                    xhr.onload = function() {
-                        if (xhr.status === 200) {
-                            try {
-                                var data = JSON.parse(xhr.responseText);
-                                if (data.country === 'CN') {
-                                    localStorage.setItem('yolong_lang', 'zh-auto');
-                                    window.location.href = zhPath;
-                                }
-                            } catch(e) {}
-                        }
-                    };
-                    xhr.onerror = function() {
-                        if (isZhUser) {
-                            localStorage.setItem('yolong_lang', 'zh-auto');
-                            window.location.href = zhPath;
-                        }
-                    };
-                    xhr.send();
-                } catch(e) {}
-            }
-        }
-    })();
     </script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>

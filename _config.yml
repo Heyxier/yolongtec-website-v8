@@ -1,8 +1,8 @@
-# Jekyll configuration for Yolongtec V7.3
-
-title: Yolong Power Tools
-description: Professional Power Tools Manufacturer
-baseurl: /yolongtec-website
+# Jekyll configuration for Yolongtec V8 (Pure Chinese)
+#
+title: 园龙科技
+description: 专业电动工具制造商
+baseurl: /yolongtec-website-v8
 
 # Build settings
 markdown: kramdown
@@ -14,15 +14,9 @@ collections:
   products:
     output: true
     permalink: /products/:name/
-  zh_products:
-    output: true
-    permalink: /zh/products/:name/
   articles:
     output: true
     permalink: /news/:name/
-  zh_articles:
-    output: true
-    permalink: /zh/news/:name/
 
 defaults:
   - scope:
@@ -33,10 +27,6 @@ defaults:
       path: "_articles"
     values:
       layout: article
-  - scope:
-      path: "_zh_articles"
-    values:
-      layout: article_zh
 
 # Exclude from site build
 exclude:
@@ -55,6 +45,7 @@ keep_files:
   - about
   - contact
   - technology
+  - legal
   - logo-green.png
   - logo-white.png
   - styles.css

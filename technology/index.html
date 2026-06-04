@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Technology - Yolong Power Tools
+title: 技术展望 - 园龙电动工具
 permalink: /technology/
 ---
 
@@ -168,13 +168,13 @@ permalink: /technology/
 
 <section class="tech-page">
     <div class="section-bg">
-        <img src="{{ site.baseurl }}/images/smart-control.jpg" alt="Technology">
+        <img src="{{ 'images/smart-control.jpg' | relative_url }}" alt="技术展望">
         <div class="section-overlay"></div>
     </div>
     <div class="container">
         <div class="tech-header">
-            <h1><span>TECHNOLOGY</span></h1>
-            <p>Pushing the boundaries of power tool technology</p>
+            <h1><span>技术展望</span></h1>
+            <p>不断突破电动工具技术边界</p>
         </div>
 
         <div class="tech-card-grid">
@@ -189,7 +189,7 @@ permalink: /technology/
                 {% endif %}
                 <div class="tech-block-body">
                     {% if article.publishedAt %}
-                    <span class="tech-block-date">{{ article.publishedAt | date: "%B %d, %Y" }}</span>
+                    <span class="tech-block-date">{{ article.publishedAt | date: "%Y年%m月%d日" }}</span>
                     {% endif %}
                     {% if article.category and article.category != "" %}
                     <span class="tech-block-category">{{ article.category | upcase }}</span>
@@ -198,17 +198,19 @@ permalink: /technology/
                     {% if article.excerpt and article.excerpt != "" %}
                     <p class="tech-block-excerpt">{{ article.excerpt }}</p>
                     {% endif %}
-                    <span class="tech-block-link">READ MORE</span>
+                    <span class="tech-block-link">阅读更多</span>
                 </div>
             </a>
             {% endfor %}
             {% else %}
             <div class="tech-empty">
                 <div class="tech-empty-icon">🔧</div>
-                <h3>Technology Insights Coming Soon</h3>
-                <p>No technology articles have been published yet. Check back later.</p>
+                <h3>技术展望即将上线</h3>
+                <p>还没有发布任何技术文章，请稍后再来看看。</p>
             </div>
             {% endif %}
         </div>
     </div>
 </section>
+
+

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About Us - Yolong Power Tools
+title: 关于我们 - 园龙电动工具
 permalink: /about/
 ---
 <style>
@@ -229,11 +229,11 @@ permalink: /about/
 
 <!-- About Hero Section - Fixed -->
     <section class="about-hero">
-        <div class="section-bg"><img src="../images/construction-site.jpg" alt="About Yolong"><div class="section-overlay"></div></div>
+        <div class="section-bg"><img src="../images/construction-site.jpg" alt="关于园龙"><div class="section-overlay"></div></div>
         <div class="container">
             <div class="about-hero-content">
                 <div class="about-hero-text">
-                    <h2>ABOUT <span>YOLONG</span></h2>
+                    <h2>关于 <span>园龙</span></h2>
                     <p>{{ about.hero.subtitle }}</p>
                 </div>
             </div>
@@ -245,10 +245,10 @@ permalink: /about/
         <div class="container">
             <div class="grid-2" style="align-items: center;">
                 <div>
-                    <img src="{{ about.profile.image }}" alt="Yolong Manufacturing" style="border: 2px solid rgba(255, 255, 255, 0.1); width: 100%;">
+                    <img src="{{ about.profile.image | prepend: '../' }}" alt="园龙制造" style="border: 2px solid rgba(255, 255, 255, 0.1); width: 100%;">
                 </div>
                 <div>
-                    <h3 style="font-family: var(--font-helvetica); font-size: 2rem; font-weight: var(--font-weight-black); color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-lg);">COMPANY <span style="color: var(--accent-500);">PROFILE</span></h3>
+                    <h3 style="font-family: var(--font-helvetica); font-size: 2rem; font-weight: var(--font-weight-black); color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-lg);">公司 <span style="color: var(--accent-500);">简介</span></h3>
                     {% for paragraph in about.profile.paragraphs %}
                     <p style="font-size: 1.05rem; font-weight: var(--font-weight-light); color: var(--text-secondary); line-height: 1.7; margin-bottom: var(--spacing-lg);">
                         {{ paragraph }}
@@ -263,8 +263,8 @@ permalink: /about/
     <section class="section values-section">
         <div class="container">
             <div class="section-header" style="text-align: center;">
-                <h2 class="section-title" style="text-align: center;">OUR <span style="color: var(--accent-500);">VALUES</span></h2>
-                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">The principles that drive everything we do</p>
+                <h2 class="section-title" style="text-align: center;">核心 <span style="color: var(--accent-500);">价值观</span></h2>
+                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">推动我们不断前进的原则</p>
             </div>
             <div class="values-grid">
                 {% for value in about.values %}
@@ -282,8 +282,8 @@ permalink: /about/
     <section class="section global-section">
         <div class="container">
             <div class="section-header" style="text-align: center;">
-                <h2 class="section-title" style="text-align: center;">GLOBAL <span style="color: var(--accent-500);">PRESENCE</span></h2>
-                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">Serving professional users worldwide</p>
+                <h2 class="section-title" style="text-align: center;">全球 <span style="color: var(--accent-500);">布局</span></h2>
+                <p class="section-desc" style="margin: 0 auto var(--spacing-3xl);">服务全球专业用户</p>
             </div>
             <div class="global-grid">
                 {% for item in about.global %}
@@ -303,9 +303,11 @@ permalink: /about/
             <div class="cta-content">
                 <h2 class="cta-title">{{ about.cta.title }}</h2>
                 <p class="cta-desc">{{ about.cta.description }}</p>
-                <a href="../contact/index.html" class="btn btn-accent btn-large">CONTACT US</a>
+                <a href="{{ "/contact/" | relative_url }}" class="btn btn-accent btn-large">联系我们</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
+
+
