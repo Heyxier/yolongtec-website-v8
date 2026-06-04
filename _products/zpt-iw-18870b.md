@@ -1,4 +1,4 @@
 ---
-layout: product_zh
+layout: product
 model: ZPT-IW-18870B
 ---
