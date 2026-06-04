@@ -9,10 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/products-dropdown.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        .nav-link, .dropdown-menu a {
+        .nav-link {
             font-family: 'Noto Sans SC', sans-serif;
             font-size: 0.95rem;
         }
@@ -37,19 +36,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="{{ site.baseurl }}/" class="nav-link">首页</a></li>
                 <li><a href="{{ site.baseurl }}/about/" class="nav-link">关于园龙</a></li>
-                <li class="nav-dropdown">
-                    <a href="{{ site.baseurl }}/products/" class="nav-link">产品中心</a>
-                    <ul class="dropdown-menu">
-                        {% assign cat_list = "" | split: "" %}
-                        {% for cat_hash in site.data.categories %}
-                            {% assign cat_list = cat_list | push: cat_hash[1] %}
-                        {% endfor %}
-                        {% assign cat_list = cat_list | sort: "order" %}
-                        {% for cat in cat_list %}
-                        <li><a href="{{ site.baseurl }}/products/{{ cat.slug }}/">{{ cat.name_zh }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </li>
+                <li><a href="{{ site.baseurl }}/products/" class="nav-link">产品中心</a></li>
                 <li><a href="{{ site.baseurl }}/news/" class="nav-link">新闻动态</a></li>
                 <li><a href="{{ site.baseurl }}/technology/" class="nav-link">技术展望</a></li>
                 <li><a href="{{ site.baseurl }}/contact/" class="nav-link">联系方式</a></li>

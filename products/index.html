@@ -27,7 +27,7 @@ permalink: /products/
             {% assign cat_list = cat_list | sort: "order" %}
             {% for cat in cat_list %}
             {% assign cat_products = site.products | where: "category", cat.slug | where: "status", true %}
-            <a href="{{ site.baseurl }}/products/{{ cat.slug }}/" class="category-card">
+            <div class="category-card">
                 <div class="category-image">
                     <img src="{{ cat.image | relative_url }}" alt="{{ cat.name_zh | default: cat.name }}">
                     <div class="category-overlay">
@@ -37,9 +37,8 @@ permalink: /products/
                 <div class="category-info">
                     <h3 class="category-name">{{ cat.name_zh | default: cat.name }}</h3>
                     <p class="category-desc">{{ cat.desc_zh | default: cat.desc }}</p>
-                    <span class="category-link">探索 →</span>
                 </div>
-            </a>
+            </div>
             {% endfor %}
         </div>
 

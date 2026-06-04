@@ -22,7 +22,7 @@ grinder-cutter:
   slug: grinder-cutter
   title: 角磨机/切割机
   desc: 'Angle grinders, cut-off tools, and rotary tools'
-  desc_zh: '冲击扳手、棘轮扳手、螺丝起子'
+  desc_zh: '角磨机、切割工具、旋转工具'
   image: /images/angle-grinders.jpg
   order: 3
 hammer:
@@ -49,7 +49,7 @@ sander-polisher:
   slug: sander-polisher
   title: 磨砂机/抛光机
   desc: 'Orbital sanders, polishers, and multi-tools'
-  desc_zh: '圆锯、往复锯、曲线锯'
+  desc_zh: '砂光机、抛光机、多功能工具'
   image: /images/battery-tech.jpg
   order: 6
 cleanning:
