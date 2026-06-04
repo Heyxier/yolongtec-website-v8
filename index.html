@@ -99,23 +99,27 @@ permalink: /
         .featured-link {
             font-family: var(--font-helvetica);
             font-size: 0.8rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--accent-500);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: var(--font-weight-medium);
+            color: var(--text-muted);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: var(--spacing-sm);
+            opacity: 0.7;
         }
         
         .featured-link::after {
             content: '→';
             transition: transform var(--transition-fast);
+            opacity: 0.5;
         }
         
+        .featured-card:hover .featured-link {
+            opacity: 1;
+        }
         .featured-card:hover .featured-link::after {
             transform: translateX(4px);
+            opacity: 1;
         }
         
         /* Technology Section */
