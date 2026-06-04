@@ -405,7 +405,6 @@ permalink: /
                         <img src="{{ cat.image | relative_url }}" alt="{{ cat.name_zh | default: cat.name }}">
                     </div>
                     <div class="featured-content">
-                        {% if item.tag %}<span class="featured-tag">{{ item.tag }}</span>{% endif %}
                         <h3>{{ cat.name_zh | default: cat.name }}</h3>
                         <p>{{ cat.desc_zh | default: cat.desc }}</p>
                         <a href="{{ site.baseurl }}/products/" class="featured-link">了解更多</a>

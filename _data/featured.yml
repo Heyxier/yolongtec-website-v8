@@ -1,10 +1,7 @@
 featured:
   - type: category
     slug: drill
-    tag: "无绳电钻"
   - type: category
     slug: fastening
-    tag: "紧固工具"
   - type: category
     slug: hammer
-    tag: "电锤系列"
