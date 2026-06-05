@@ -131,7 +131,7 @@ body {
 
 .btn-accent {
     background: transparent;
-    color: var(--text-primary);
+    color: var(--accent-500);
     border-color: var(--accent-500);
 }
 
