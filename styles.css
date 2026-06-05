@@ -131,7 +131,7 @@ body {
 
 .btn-accent {
     background: transparent;
-    color: var(--accent-500);
+    color: var(--text-primary);
     border-color: var(--accent-500);
 }
 
@@ -454,7 +454,7 @@ body {
 }
 
 .hero-title .highlight {
-    color: var(--accent-500);
+    color: var(--text-primary);
     display: block;
 }
 
@@ -494,7 +494,7 @@ body {
     width: 24px;
     height: 24px;
     background: rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 0.85);
+    color: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -699,7 +699,7 @@ body {
 .search-result-item .result-type-label {
     font-size: 0.65rem;
     font-weight: 700;
-    color: var(--accent-500);
+    color: var(--text-primary);
     letter-spacing: 1px;
     margin-right: 6px;
 }
@@ -769,7 +769,7 @@ body {
     font-family: var(--font-helvetica);
     font-size: 0.75rem;
     font-weight: var(--font-weight-bold);
-    color: var(--accent-500);
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -800,7 +800,7 @@ body {
     font-family: var(--font-helvetica);
     font-size: 0.8rem;
     font-weight: var(--font-weight-bold);
-    color: var(--accent-500);
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -898,7 +898,7 @@ body {
 
 .solution-features li::before {
     content: '●';
-    color: var(--accent-500);
+    color: var(--text-primary);
     font-size: 0.7rem;
 }
 
@@ -1000,7 +1000,7 @@ body {
     font-family: var(--font-helvetica);
     font-size: 3.5rem;
     font-weight: var(--font-weight-black);
-    color: var(--accent-500);
+    color: var(--text-primary);
     display: inline;
     line-height: 1.1;
 }
@@ -1049,7 +1049,7 @@ body {
     font-family: var(--font-helvetica);
     font-size: 3rem;
     font-weight: var(--font-weight-black);
-    color: var(--accent-500);
+    color: var(--text-primary);
     margin-bottom: var(--spacing-lg);
 }
 
@@ -1124,7 +1124,7 @@ body {
 .contact-icon svg {
     width: 24px;
     height: 24px;
-    color: var(--accent-500);
+    color: var(--text-primary);
 }
 
 .contact-item strong {
