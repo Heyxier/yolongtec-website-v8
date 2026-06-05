@@ -197,6 +197,7 @@ permalink: /
             height: 250px;
             object-fit: cover;
             display: block;
+            transition: transform var(--transition-slow);
         }
 
         .news-card-image-placeholder {
@@ -208,6 +209,10 @@ permalink: /
             justify-content: center;
             font-size: 3rem;
             color: var(--accent-500);
+        }
+
+        .news-card:hover .news-card-image {
+            transform: scale(1.05);
         }
 
         .news-card-body {
