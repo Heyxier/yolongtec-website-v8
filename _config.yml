@@ -5,7 +5,7 @@ description: 专业电动工具制造商
 baseurl: /yolongtec-website-v8
 
 # Site identifier (used by CMS contact API and form JS)
-site_id: yolongtec
+site_id: yolongtecofficalwebsite-cn
 
 # Build settings
 markdown: kramdown
