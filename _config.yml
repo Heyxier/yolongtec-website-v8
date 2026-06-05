@@ -4,6 +4,9 @@ title: 园龙科技
 description: 专业电动工具制造商
 baseurl: /yolongtec-website-v8
 
+# Site identifier (used by CMS contact API and form JS)
+site_id: yolongtec
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
