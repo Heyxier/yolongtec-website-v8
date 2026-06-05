@@ -493,8 +493,8 @@ body {
 .feature-icon {
     width: 24px;
     height: 24px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
