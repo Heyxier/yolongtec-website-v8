@@ -447,6 +447,54 @@ function displaySearchResults(results, container) {
     container.classList.add('active');
 }
 
+/**
+ * 表单提交
+ */
+function initFormSubmit() {
+    const form = document.querySelector('.contact-form');
+    
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            // 自动记录来源页面 URL
+            data.source_url = window.location.href;
+            
+            // 提交按钮状态
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '提交中...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('https://api.yolongtec.com/api/contact/yolongtec', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'ok') {
+                    alert('✅ 留言已提交！我们的工作人员将尽快与您联系。');
+                    form.reset();
+                } else {
+                    alert('❌ 提交失败，请稍后重试。');
+                }
+            } catch (err) {
+                alert('❌ 网络错误，请检查网络连接后重试。');
+                console.error('Contact form error:', err);
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+    }
+}
+
 // 导出函数供外部使用
 window.Yolong = {
     initStatsAnimation,
